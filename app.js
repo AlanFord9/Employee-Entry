@@ -2,21 +2,50 @@ var database = firebase.database();
 
 var connectionsRef = database.ref("/connections");
 
-// '.info/connected' is a special location provided by Firebase that is updated every time
-// the client's connection state changes.
-// '.info/connected' is a boolean value, true if the client is connected and false if they are not.
-var connectedRef = database.ref(".info/connected");
+$("#add-employee").on("click", function () {
+    event.preventDefault();
 
-// When the client's connection state changes...
-connectedRef.on("value", function(snap) {
+    let name = $("#name-input").val().trim();
+    let role = $("#role-input").val().trim();
+    let startDate = $("#start-input").val().trim();
+    let payRate = $("#rate-input").val().trim();
+    
+    
+    database.ref().push({
+        name: name,
+        role: role,
+        startDate: startDate,
+        rate: payRate,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
 
-  // If they are connected..
-  if (snap.val()) {
-
-    // Add user to the connections list.
-    var con = connectionsRef.push(true);
-
-    // Remove user from the connection list when they disconnect.
-    con.onDisconnect().remove();
-  }
 });
+
+database.ref().on("child_added", function(childSnapshot) {
+
+    // Log everything that's coming out of snapshot
+    console.log(childSnapshot.val().name);
+    console.log(childSnapshot.val().role);
+    console.log(childSnapshot.val().startDate);
+    console.log(childSnapshot.val().rate);
+
+    // full list of items to the well*******
+    $("#employee-data").append("<tr class='well'><span class='member-name'> " +
+      childSnapshot.val().name +
+      " </span><span class='member-email'> " + childSnapshot.val().email +
+      " </span><span class='member-age'> " + childSnapshot.val().age +
+      " </span><span class='member-comment'> " + childSnapshot.val().comment +
+      " </span></div>");
+
+    // Handle the errors
+  }, function(errorObject) {
+    console.log("Errors handled: " + errorObject.code);
+  });
+
+//   dataRef.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+//     // Change the HTML to reflect
+//     $("#name-display").text(snapshot.val().name);
+//     $("#email-display").text(snapshot.val().email);
+//     $("#age-display").text(snapshot.val().age);
+//     $("#comment-display").text(snapshot.val().comment);
+//   });
