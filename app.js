@@ -29,13 +29,14 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val().startDate);
     console.log(childSnapshot.val().rate);
 
+    let tr = $("<tr>");
+    let td = $("<td>");
+    tr.append(td);
+
     // full list of items to the well*******
     $("#employee-data").append(
-        "<tr ><th scope='col' class='employee-name'> " +childSnapshot.val().name +
-      " </th><th class='employee-role' scope='col'> " + childSnapshot.val().role +
-      " </th><th class='employee-start' scope='col'> " + childSnapshot.val().startDate +
-      " </th><th class='employee-rate' scope='col'> " + childSnapshot.val().rate +
-      " </th></tr>");
+        
+    );
 
     // Handle the errors
   }, function(errorObject) {
