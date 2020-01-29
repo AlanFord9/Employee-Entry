@@ -30,12 +30,12 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val().rate);
 
     // full list of items to the well*******
-    $("#employee-data").append("<tr class='well'><span class='member-name'> " +
-      childSnapshot.val().name +
-      " </span><span class='member-email'> " + childSnapshot.val().email +
-      " </span><span class='member-age'> " + childSnapshot.val().age +
-      " </span><span class='member-comment'> " + childSnapshot.val().comment +
-      " </span></div>");
+    $("#employee-data").append(
+        "<tr ><th scope='col' class='employee-name'> " +childSnapshot.val().name +
+      " </th><th class='employee-role' scope='col'> " + childSnapshot.val().role +
+      " </th><th class='employee-start' scope='col'> " + childSnapshot.val().startDate +
+      " </th><th class='employee-rate' scope='col'> " + childSnapshot.val().rate +
+      " </th></tr>");
 
     // Handle the errors
   }, function(errorObject) {
