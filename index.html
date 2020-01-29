@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header">
+              Current Employees
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">Months Worked</th>
+                    <th scope="col">Monthly Rate($)</th>
+                    <th scope="col">Total Billed($)</th>
+                  </tr>
+                </thead>
+                <tbody id="employeeData"></tbody>
+            </table>
+    
+    
+        <div class="card">
+            <div class="card-header">
+              Add Employee
+            </div>
+            <div class="card-body">
+    
+                <!-- Sign-up Form (note the various input "types")-->
+                <form role="form">
+                  <div class="form-group row">
+                    <label for="name-input">Employee Name</label>
+                    <input class="form-control" id="name-input" type="text">
+                  </div>
+                  <div class="form-group row">
+                    <label for="email-input">Role</label>
+                    <input class="form-control" id="email-input" type="email">
+                  </div>
+                  <div class="form-group row">
+                    <label for="age-input">Start Date (MM/DD/YYYY)</label>
+                    <input class="form-control" id="age-input" type="number">
+                  </div>
+                  <div class="form-group row">
+                    <label for="comment-input">Monthly Rate</label>
+                    <textarea class="form-control" id="comment-input" rows="5"></textarea>
+                  </div>
+                  <button class="btn btn-default btn-primary text-right" id="add-user" type="submit">Submit</button>
+                </form>
+              </div>
+          </div>
+        <div class="row">
+    
+          <!-- Sign-Up Card-->
+
+              
+    
+</body>
+</html>
